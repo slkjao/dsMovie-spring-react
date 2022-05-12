@@ -4,6 +4,11 @@
     padding: 20px;
 }
 
+.dsmovie-contact-link {
+    text-decoration: none;
+    color: #fff;
+}
+
 .dsmovie-form {
     width: calc(100% - 20px);
 }
