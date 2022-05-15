@@ -3,14 +3,19 @@ import MovieCards from "components/MovieCards";
 import MovieScore from "components/MovieScore";
 import Moviestars from "components/Moviestars";
 import Pagination from "components/Pagination";
+import { useEffect, useState } from "react";
+import { MoviePage } from "types/movie";
 import { BASE_URL } from "utils/requests";
 
 function Listing() {
-  // FORMA ERRADA
+  const [pageNumber, setPageNumber] = useState(0);
 
-  axios
-    .get(`${BASE_URL}/movies?size=12&page=0`)
-    .then((response) => console.log(response.data));
+  useEffect(() => {
+    axios.get(`${BASE_URL}/movies?size=12&page=0`).then((response) => {
+      const data = response.data as MoviePage;
+      setPageNumber(data.number);
+    });
+  }, []);
 
   return (
     <>
